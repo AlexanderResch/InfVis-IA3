@@ -10,7 +10,6 @@ df = pd.read_csv(input_file, usecols=[
     "Sex",
     "Tested",
     "Country",
-    "MeetCountry",
     "TotalKg",
     "Dots",
     "Date"

@@ -87,7 +87,7 @@ Promise.all([
     if (d.Tested === "Yes") tested = "Yes"
     else tested = "Unknown"
 
-    const countryRaw = d.Country || d.MeetCountry || null
+    const countryRaw = d.Country || null
     const countryName = countryRaw ? normalizeCountryName(countryRaw) : null
 
     const dots = d.Dots === "" ? NaN : +d.Dots
@@ -106,7 +106,7 @@ Promise.all([
 
   // remove Antarctic from data
   worldData.features = worldData.features.filter(
-    f => f.properties && f.properties.name !== "Antarctica"
+    f => f.properties.name !== "Antarctica"
   )
 
   rawRows = rows.filter(r => r.countryName)
@@ -266,7 +266,7 @@ function updateMapColors() {
   const max = d3.max(values)
 
   if (!Number.isFinite(min) || !Number.isFinite(max)) {
-    console.warn("Keine gültigen Werte für Farbskala gefunden")
+    console.warn("No valid values for color scaling")
     return
   }
 
